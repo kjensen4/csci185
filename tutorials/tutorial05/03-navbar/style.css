@@ -1,0 +1,64 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body * {
+    box-sizing: border-box;
+    border: 2px solid #000;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    min-width: 800px; 
+    /* if this were a real project, we'd probably want to do 
+       some resizing or a mobile layout below this min-width */
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+    padding-inline-start: 0px;
+    align-items: center;
+    justify-content: space-around;
+    width: 500px;
+    margin: 10px 40px;
+}
+
+nav h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto 40px;
+}
+
+nav li {
+    display:flex;
+    margin: 10px;
+}
+
+a {
+    color: #444;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 10px;
+}
+
+ul a {
+    font-size: 1.8em;
+    padding: 10px;
+}
+
+h1 a {
+    border: none;
+    font-size: 2em;
+}
