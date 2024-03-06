@@ -1,0 +1,65 @@
+/* You're welcome to change any of this! */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+p, a, li {
+    line-height: 1.5em;
+    font-size: 1.1em;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    padding: 20px;
+}
+
+main section {
+    padding: 20px;
+}
+
+h2 {
+    margin: 0px;
+}
+
+@media screen and (width <= 1000px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-evenly;
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+    }
+
+    section > * {
+        display: none;
+    }
+
+    input {
+        display: block;
+    }
+
+    input:checked ~ *  {
+        display: block;
+    }
+}
+
+* {
+    border: 1px black solid;
+}
