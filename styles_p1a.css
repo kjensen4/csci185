@@ -67,7 +67,8 @@ input, p, footer {
 
 @media (width <= 980px) {
     body {
-        height: 100vh;
+        min-height: 94vh;
+        height: 94vh;
         grid-template-rows: auto 1fr 120px;
     }
 
