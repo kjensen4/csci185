@@ -61,15 +61,15 @@ h2, a {
     text-wrap: nowrap;
 }
 
-input, p, footer {
+input, p {
     display: none;
 }
 
 @media (width <= 980px) {
     body {
         min-height: 93vh;
-        height: 94vh;
-        grid-template-rows: auto 1fr 120px;
+        height: 93vh;
+        grid-template-rows: auto 1fr;
     }
 
     header {
@@ -125,12 +125,5 @@ input, p, footer {
     input:checked + section  {
         display: block;
         overflow: auto;
-    }
-
-    footer {
-        display: block;
-        grid-row: 3 / span 1;
-        text-align: center;
-        color: #555;
     }
 }
