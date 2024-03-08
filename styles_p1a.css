@@ -61,11 +61,19 @@ a {
 
 @media (width <= 980px) {
     body {
-        min-height: 90vh;
+        min-height: 94vh;
+    }
+
+    header {
+        margin: 40px;
+        margin-bottom: 0;
     }
 
     main {
-        grid-template-rows: auto 1fr auto 30px;
+        grid-template-rows: auto 1fr auto 45px;
+        gap: 40px;
+        padding: 40px;
+        padding-top: 20px;
     }
 
     p {
@@ -80,10 +88,13 @@ a {
 
     h1 {
         min-width: 0;
-        max-height: 37px;
         text-wrap: nowrap;
         overflow: hidden;
         text-align: center;
+    }
+
+    h2, h1, li {
+        font-size: 200%;
     }
 
     input {
@@ -101,7 +112,6 @@ a {
 
     input:checked + section  {
         display: block;
-        max-height: 50vh;
         overflow: auto;
     }
 }
