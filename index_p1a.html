@@ -1,67 +1,82 @@
 <!-- You're welcome to change any of this! -->
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-        <!-- stylesheets and metadata go here -->
-       <title>My CSCI 185 Homepage</title>       
-       <link rel="stylesheet" href="styles_p1a.css">
-   </head>
-   <body>
-       <!-- HTML content tags go here. Change anything you want! -->
-       <header>
-           <h1>My CSCI 185 Homepage</h1>
-       </header> 
-       <main>
-            <section id="tutorials">
-                <input type="radio" name="nav"/>
-                <h2>Tutorials</h2>
-                <ul>
-                    <li><a href="./tutorials/tutorial02/index.html">Tutorial 2</a></li>
-                    <li><a href="./index.html">Tutorial 3</a> (this page)</li>
-                    <li><a href="./tutorials/tutorial04/index.html">Tutorial 4</a></li>
-                    <li><a href="./tutorials/tutorial05/01-flexbox-froggy/Capture.PNG">Tutorial 5, task 1</a></li>
-                    <li><a href="./tutorials/tutorial05/02-flex/index.html">Tutorial 5, task 2</a></li>
-                    <li><a href="./tutorials/tutorial05/03-navbar/index.html">Tutorial 5, task 3</a></li>
-                </ul>
-            </section>
-            <section id="homework">
-                <input type="radio" name="nav"/>
-                <h2>Homework</h2>
-                <ul>
-                    <li><a href="./homework/homework2/task01/index.html">Homework 2, task 1</a></li>
-                    <li><a href="./homework/homework2/task02/history.html">Homework 2, task 2</a></li>
-                    <li><a href="./homework/homework3/exercise01/Capture.PNG">Homework 3, task 1</a></li>
-                    <li><a href="./homework/homework3/exercise02/index.html">Homework 3, task 2</a></li>
-                    <li><a href="./homework/homework3/exercise03/index.html">Homework 3, task 3</a></li>
-                    <li><a href="./homework/homework4/01-css-grid-garden/Capture.PNG">Homework 4, task 1</a></li>
-                    <li><a href="./homework/homework4/02-grid/index.html">Homework 4, task 2</a></li>
-                    <li><a href="./homework/homework4/03-tacotemple/index.html">Homework 4, task 3</a></li>
-                    <li><a href="./homework/homework4/04-responsive-layout-grid/index.html">Homework 4, task 4</a></li>
-                </ul>
-            </section>
-            <section id="inspiration">
-                <input type="radio" name="nav"/>
-                <h2>Design Inspiration</h2>
-                <ul>
-                    <li><a href="https://www.youtube.com/">YouTube</a> Clean design; well-arranged sections and a sidebar that's only present when you need it to be.</li>
-                    <li><a href="https://csci-185.github.io/spring2024/design-reference/">This class's webpage</a> Very pretty header bar.</li>
-                    <li></li>
-                </ul>
-            </section>
-            <section id="class-exercises">
-                <input type="radio" name="nav"/>
-                <h2>Class Exercises</h2>
-                <!-- 
+
+<head>
+    <!-- stylesheets and metadata go here -->
+    <title>My CSCI 185 Homepage</title>
+    <link rel="stylesheet" href="styles_p1a.css">
+</head>
+
+<body>
+    <!-- HTML content tags go here. Change anything you want! -->
+    <header>
+        <h1>My CSCI 185 Homepage</h1>
+    </header>
+
+    <main>
+        <p>Tutorials</p>
+        <input type="radio" name="nav" />
+        <section id="tutorials">
+            <h2>Tutorials</h2>
+            <ul>
+                <li><a href="./tutorials/tutorial02/index.html">Tutorial 2</a></li>
+                <li><a href="./index.html">Tutorial 3</a> (this page)</li>
+                <li><a href="./tutorials/tutorial04/index.html">Tutorial 4</a></li>
+                <li><a href="./tutorials/tutorial05/01-flexbox-froggy/Capture.PNG">Tutorial 5, task 1</a></li>
+                <li><a href="./tutorials/tutorial05/02-flex/index.html">Tutorial 5, task 2</a></li>
+                <li><a href="./tutorials/tutorial05/03-navbar/index.html">Tutorial 5, task 3</a></li>
+            </ul>
+        </section>
+
+        <p>Homework</p>
+        <input type="radio" name="nav" checked="checked" />
+        <section id="homework">
+            <h2>Homework</h2>
+            <ul>
+                <li><a href="./homework/homework2/task01/index.html">Homework 2, task 1</a></li>
+                <li><a href="./homework/homework2/task02/history.html">Homework 2, task 2</a></li>
+                <li><a href="./homework/homework3/exercise01/Capture.PNG">Homework 3, task 1</a></li>
+                <li><a href="./homework/homework3/exercise02/index.html">Homework 3, task 2</a></li>
+                <li><a href="./homework/homework3/exercise03/index.html">Homework 3, task 3</a></li>
+                <li><a href="./homework/homework4/01-css-grid-garden/Capture.PNG">Homework 4, task 1</a></li>
+                <li><a href="./homework/homework4/02-grid/index.html">Homework 4, task 2</a></li>
+                <li><a href="./homework/homework4/03-tacotemple/index.html">Homework 4, task 3</a></li>
+                <li><a href="./homework/homework4/04-responsive-layout-grid/index.html">Homework 4, task 4</a></li>
+            </ul>
+        </section>
+
+        <p>Inspiration</p>
+        <input type="radio" name="nav" />
+        <section id="inspiration">
+            <h2>Design Inspiration</h2>
+            <ul>
+                <li><a href="https://www.youtube.com/">YouTube</a> Clean design; well-arranged sections and a
+                    sidebar that's only present when you need it to be.</li>
+                <li><a href="https://csci-185.github.io/spring2024/design-reference/">This class's webpage</a> Very
+                    pretty header bar.</li>
+                <li></li>
+            </ul>
+        </section>
+
+        <p>Exercises</p>
+        <input type="radio" name="nav" />
+        <section id="class-exercises">
+            <h2>Class Exercises</h2>
+            <!-- 
                     Links to your in-class activities
                 -->
-            </section>
-            <section id="quizzes">
-                <input type="radio" name="nav"/>
-                <h2>Quizzes</h2>
-                <ul>
-                    <li><a href="./quizzes/quiz1/index.html">Quiz 1</a></li>
-                </ul>
-            </section>
-        </main>
-   </body>
+        </section>
+
+        <p>Quizzes</p>
+        <input type="radio" name="nav" />
+        <section id="quizzes">
+            <h2>Quizzes</h2>
+            <ul>
+                <li><a href="./quizzes/quiz1/index.html">Quiz 1</a></li>
+            </ul>
+        </section>
+    </main>
+</body>
+
 </html>
