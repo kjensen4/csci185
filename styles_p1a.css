@@ -1,23 +1,29 @@
-/* You're welcome to change any of this! */
 * {
     box-sizing: border-box;
-    background-color: #000;
+    background-color: #101;
     color: #fff;
 }
 
+/* Overflow usage learned from: https://developer.mozilla.org/en-US/docs/Web/CSS/overflow */
 body {
     margin: 0px;
     font-family: Arial, sans-serif;
     min-height: 100vh;
     display: grid;
-    grid-template-rows: auto 1fr;
-    grid-template-columns: 1fr;
-    overflow-x: hidden;
-    overflow-y: auto;
+    grid-template: auto 1fr / 1fr;
+    overflow: hidden auto;
 }
 
 p, a, li {
     line-height: 1.5em;
+}
+
+a {
+    color: #cc8
+}
+
+a:hover {
+    color: #bac
 }
 
 header {
@@ -28,7 +34,7 @@ header {
 }
 
 header, header *, main * {
-    background-color: #222;
+    background-color: #1c131c;
 }
 
 header, main section, h2, p {
@@ -37,10 +43,9 @@ header, main section, h2, p {
 
 main {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template: 1fr / repeat(6, 1fr);
     gap: 20px;
     padding: 20px;
-    grid-template-rows: 1fr;
     overflow-x: auto;
     min-width: auto;
 }
@@ -51,10 +56,10 @@ main section {
     min-width: 280px;
 }
 
-h2 {
+h2, p {
     margin: 0px;
     text-align: center;
-    background-color: #333;
+    background-color: #2c222c;
 }
 
 h2, a {
@@ -104,20 +109,46 @@ input, p {
         font-size: 200%;
     }
 
+    /* "appearance: none" learned from: https://moderncss.dev/pure-css-custom-styled-radio-buttons/ */
+ 
     input {
         grid-row: 4 / span 1;
         display: block;
         margin-top: -20px;
+        appearance: none;
+        justify-self: center;
+        align-self: center;
     }
 
-    img {
-        grid-row: 4 / span 1;
+    /* ":not()" and ":checked" learned from: https://stackoverflow.com/questions/8846075/css3-unchecked-pseudo-class */
+    input:checked {
+        background-color: #bac;
+        border: 3px solid #fff;    
+        border-radius: 25%;
+        width: 50px;
+        height: 50px;
+        transition-property: background-color, border-radius, width, height, border-color;
+        transition-duration: 0.25s;
+        transition-timing-function: ease-out;
+    }
+
+    input:not(:checked) {
+        background-color: #553;
+        border-radius: 50%;
+        border: #cc8 3px solid;
+        width: 35px;
+        height: 35px;
+        transition-property: background-color, border-radius, width, height, border-color;
+        transition-duration: 0.25s;
+        transition-timing-function: ease-out;
     }
 
     section {
         grid-area: 2 / 1 / span 1 / span 6;
     }
 
+    /* Concept inspired by convention among mobile apps, most immediately the Discord mobile app and potentially Duolingo */
+    /* Method learned from: https://stackoverflow.com/questions/28131993/changing-the-properties-of-another-element-using-pseudo-classes */
     input:not(:checked) + section {
         display: none;
     }
