@@ -15,8 +15,9 @@
     </header>
 
     <main>
-        <p>Projects</p>
-        <input type="radio" name="nav" title="Projects"/>
+        <!-- Input title and aria-labelledby fields suggested by Wave: https://wave.webaim.org/-->
+        <p id="projects-label">Projects</p>
+        <input type="radio" name="nav" title="Projects" aria-labelledby="projects-label"/>
         <section id="projects">
             <h2>Projects</h2>
             <ul>
@@ -25,8 +26,8 @@
             </ul>
         </section>
 
-        <p>Homework</p>
-        <input type="radio" name="nav" title="Homework" checked />
+        <p id="homework-label">Homework</p>
+        <input type="radio" name="nav" title="Homework" aria-labelledby="homework-label" checked />
         <section id="homework">
             <h2>Homework</h2>
             <ul>
@@ -42,8 +43,8 @@
             </ul>
         </section>
 
-        <p>Quizzes</p>
-        <input type="radio" name="nav" title="Quizzes" />
+        <p id="quizzes-label">Quizzes</p>
+        <input type="radio" name="nav" title="Quizzes" aria-labelledby="quizzes-label" />
         <section id="quizzes">
             <h2>Quizzes</h2>
             <ul>
@@ -51,8 +52,8 @@
             </ul>
         </section>
 
-        <p>Tutorials</p>
-        <input type="radio" name="nav" title="Tutorials" />
+        <p id="tutorials-label">Tutorials</p>
+        <input type="radio" name="nav" title="Tutorials" aria-labelledby="tutorials-label" />
         <section id="tutorials">
             <h2>Tutorials</h2>
             <ul>
@@ -65,8 +66,8 @@
             </ul>
         </section>
 
-        <p>Inspiration</p>
-        <input type="radio" name="nav" title="Inspiration" />
+        <p id="inspiration-label">Inspiration</p>
+        <input type="radio" name="nav" title="Inspiration" aria-labelledby="inspiration-label" />
         <section id="inspiration">
             <h2>Design Inspiration</h2>
             <ul>
@@ -77,8 +78,8 @@
             </ul>
         </section>
 
-        <p>Exercises</p>
-        <input type="radio" name="nav" />
+        <p id="exercises-label">Exercises</p>
+        <input type="radio" name="nav" title="Exercises" aria-labelledby="exercises-label" />
         <section id="class-exercises">
             <h2>Class Exercises</h2>
             <!-- 
