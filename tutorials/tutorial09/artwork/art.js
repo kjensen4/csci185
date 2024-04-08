@@ -7,6 +7,24 @@ function randomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function randomColor(min, max) {
+    return {r: randomInt(min.r, max.r), g: randomInt(min.g, max.g), b: randomInt(min.b, max.b)}
+}
+
+function colorSum (a,b) {
+    return {r: a.r+b.r, g: a.g+b.g, b: a.b+b.b}
+}
+
+function colorScale (a,s) {
+    return {r: a.r*s, g: a.g*s, b: a.b*s}
+}
+
+// Quadratic interpolation: returns a when t==0, b when t==0.5, and c when t==1
+function colorInterpolate(t,a,b,c){
+    let temp = colorSum(colorScale(a, 2*(t-1)*(t-0.5)), colorScale(b, -4*t*(t-1)))
+    return colorSum(temp, colorScale(c, 2*t*(t-0.5)))
+}
+
 function setup() {
     createCanvas(canvasWidth, canvasHeight);
     frameRate(2); // how many redraws per second
@@ -14,25 +32,16 @@ function setup() {
     background(0)
     noStroke()
 
-    let rmin = 53
-    let rmax = 73
-    let gmin = 25
-    let gmax = 45
-    let bmin = 93
-    let bmax = 113
-    let diff = 60
+    let colormin = {r:53, g: 25, b: 93}
+    let colormax = {r:73, g: 45, b: 113}
+    let diff = {r: 60, g: 0, b: 60}
 
-    let r1 = randomInt(rmin, rmax)
-    let g1 = randomInt(gmin, gmax)
-    let b1 = randomInt(bmin, bmax)
-
-    let r2 = randomInt(rmin+diff, rmax+diff)
-    let g2 = randomInt(gmin, gmax)
-    let b2 = randomInt(bmin+diff, bmax+diff)
-
-    let r3 = randomInt(rmin+2*diff, rmax+2*diff)
-    let g3 = randomInt(gmin, gmax)
-    let b3 = randomInt(bmin+2*diff, bmax+2*diff)
+    let colors = []
+    for (let i = 0; i < 3; i++) {
+        colors[i] = randomColor(colormin, colormax)
+        colormin = colorSum(colormin,diff)
+        colormax = colorSum(colormax,diff)
+    }
 
     for (let i = 0; i<10000; i++) {
         // generate a random x-position, y-position, and size:
@@ -43,14 +52,13 @@ function setup() {
         // interpolation parameter (radial: 0 at screen center, 1 at screen corners)
         let t = ((x/canvasWidth - 0.5)**2 + (y/canvasHeight - 0.5)**2)*2
 
-        // interpolation function (quadratic passing through color 1 at t=0, color 2 at t=0.5, color 3 at t=1)
-        let r = 2*r1*(t-0.5)*(t-1)-4*r2*t*(t-1)+2*r3*t*(t-0.5) + randomInt(-20,20)
-        let g = 2*g1*(t-0.5)*(t-1)-4*g2*t*(t-1)+2*g3*t*(t-0.5) + randomInt(-20,20)
-        let b = 2*b1*(t-0.5)*(t-1)-4*b2*t*(t-1)+2*b3*t*(t-0.5) + randomInt(-20,20)
+        // choose fill color
+        let interpolatedColor = colorInterpolate(t, colors[0], colors[1], colors[2])
+        let randomOffset = randomColor({r:-20,g:-20,b:-20}, {r:20,g:20,b:20})
+        let fillColor = colorSum(interpolatedColor, randomOffset)
 
-        fill(r,g,b,5);
-
-        // Draw a random circle:
+        // draw
+        fill(fillColor.r, fillColor.g, fillColor.b,5);
         circle(x, y, size);
     }
 }

@@ -17,6 +17,14 @@ const cars = [{
     speed: -5,
     acceleration: -0.01,
     color: 'green'
+},
+{
+    x: canvasWidth/2,
+    y: canvasHeight/2,
+    width:500,
+    speed: -10,
+    acceleration: 0.01,
+    color: '#753'
 }]
 
 
@@ -35,6 +43,12 @@ function draw() {
     for (let i = 0; i < cars.length; i++) {
         cars[i].x += cars[i].speed;
         cars[i].speed += cars[i].acceleration;
+        
+        // screen wrap
+        cars[i].x = (cars[i].x + canvasWidth) % canvasWidth
+        
+        // redraw the car:
+        drawCar(cars[i].x, cars[i].y, cars[i].width, cars[i].color);
 
         // seamless wrap
         if (cars[i].x >= canvasWidth-cars[i].width/2) {
@@ -42,20 +56,7 @@ function draw() {
         } else if (cars[i].x <= cars[i].width/2) {
             drawCar(cars[i].x+canvasWidth, cars[i].y, cars[i].width, cars[i].color)
         }
-    
-        // screen wrap
-        if (cars[i].x >= canvasWidth+cars[i].width/2) {
-            cars[i].x = cars[i].width/2
-        } else if (cars[i].x <= -cars[i].width/2) {
-            cars[i].x = canvasWidth-cars[i].width/2
-        }
-
-        // redraw the car:
-        drawCar(cars[i].x, cars[i].y, cars[i].width, cars[i].color);
     }
-    
-    // draw the grid (optional -- feel free to remove this line):
-    // drawGrid(canvasWidth, canvasHeight);
 }
 
 

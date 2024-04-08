@@ -1,73 +1,101 @@
 <!-- You're welcome to change any of this! -->
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-        <!-- stylesheets and metadata go here -->
-       <title>My CSCI 185 Homepage</title>       
-       <link rel="stylesheet" href="styles.css">
-   </head>
-   <body>
-       <!-- HTML content tags go here. Change anything you want! -->
-       <header>
-           <h1>My CSCI 185 Homepage</h1>
-       </header> 
-       <main>
-            <section id="Projects">
-                <h2>Projects</h2>
-                <ul>
-                    <li><a href="./index_p1a.html">Project 1a</a></li>
-                    <li><a href="./p1a_wireframe.png">Project 1a Wireframes</a></li>
-                </ul>
-            </section>
-            <section id="tutorials">
-                <h2>Tutorials</h2>
-                <ul>
-                    <li><a href="./tutorials/tutorial02/index.html">Tutorial 2</a></li>
-                    <li><a href="./index.html">Tutorial 3</a> (this page)</li>
-                    <li><a href="./tutorials/tutorial04/index.html">Tutorial 4</a></li>
-                    <li><a href="./tutorials/tutorial05/01-flexbox-froggy/Capture.PNG">Tutorial 5, task 1</a></li>
-                    <li><a href="./tutorials/tutorial05/02-flex/index.html">Tutorial 5, task 2</a></li>
-                    <li><a href="./tutorials/tutorial05/03-navbar/index.html">Tutorial 5, task 3</a></li>
-                    <li><a href="./tutorials/tutorial07/01-font-switcher/index.html">Tutorial 7, task 1</a></li>
-                    <li><a href="./tutorials/tutorial07/02-theme-switcher/index.html">Tutorial 7, task 2</a></li>
-                    <li><a href="./tutorials/tutorial07/03-dyslexia-mode/index.html">Tutorial 7, task 3</a></li>
-                    <li><a href="./tutorials/tutorial08/index.html">Tutorial 8</a></li>
-                </ul>
-            </section>
-            <section id="homework">
-                <h2>Homework</h2>
-                <ul>
-                    <li><a href="./homework/homework2/task01/index.html">Homework 2, task 1</a></li>
-                    <li><a href="./homework/homework2/task02/history.html">Homework 2, task 2</a></li>
-                    <li><a href="./homework/homework3/exercise01/Capture.PNG">Homework 3, task 1</a></li>
-                    <li><a href="./homework/homework3/exercise02/index.html">Homework 3, task 2</a></li>
-                    <li><a href="./homework/homework3/exercise03/index.html">Homework 3, task 3</a></li>
-                    <li><a href="./homework/homework4/01-css-grid-garden/Capture.PNG">Homework 4, task 1</a></li>
-                    <li><a href="./homework/homework4/02-grid/index.html">Homework 4, task 2</a></li>
-                    <li><a href="./homework/homework4/03-tacotemple/index.html">Homework 4, task 3</a></li>
-                    <li><a href="./homework/homework4/04-responsive-layout-grid/index.html">Homework 4, task 4</a></li>
-                </ul>
-            </section>
-            <section id="inspiration">
-                <h2>Design Inspiration</h2>
-                <ul>
-                    <li><a href="https://www.youtube.com/">YouTube</a> Clean design; well-arranged sections and a sidebar that's only present when you need it to be.</li>
-                    <li><a href="https://csci-185.github.io/spring2024/design-reference/">This class's webpage</a> Very pretty header bar.</li>
-                    <li></li>
-                </ul>
-            </section>
-            <section id="class-exercises">
-                <h2>Class Exercises</h2>
-                <!-- 
+
+<head>
+    <!-- stylesheets and metadata go here -->
+    <title>My CSCI 185 Homepage</title>
+    <link rel="stylesheet" href="styles_p1a.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- HTML content tags go here. Change anything you want! -->
+    <header>
+        <h1 class="sixtyfour-font">My CSCI 185 Homepage</h1>
+    </header>
+
+    <main>
+        <!-- Input title and aria-labelledby fields suggested by Wave: https://wave.webaim.org/-->
+        <p id="projects-label">Projects</p>
+        <input type="radio" name="nav" title="Projects" aria-labelledby="projects-label"/>
+        <section id="projects">
+            <h2 class="sixtyfour-font">Projects</h2>
+            <ul>
+                <li><a href="./index.html">Project 1a (this page)</a></li>
+                <li><a href="./p1a_wireframe.png">Project 1a Wireframes</a></li>
+            </ul>
+        </section>
+
+        <p id="homework-label">Homework</p>
+        <input type="radio" name="nav" title="Homework" aria-labelledby="homework-label" checked />
+        <section id="homework">
+            <h2 class="sixtyfour-font">Homework</h2>
+            <ul>
+                <li><a href="./homework/homework2/task01/index.html">Homework 2, task 1</a></li>
+                <li><a href="./homework/homework2/task02/history.html">Homework 2, task 2</a></li>
+                <li><a href="./homework/homework3/exercise01/Capture.PNG">Homework 3, task 1</a></li>
+                <li><a href="./homework/homework3/exercise02/index.html">Homework 3, task 2</a></li>
+                <li><a href="./homework/homework3/exercise03/index.html">Homework 3, task 3</a></li>
+                <li><a href="./homework/homework4/01-css-grid-garden/Capture.PNG">Homework 4, task 1</a></li>
+                <li><a href="./homework/homework4/02-grid/index.html">Homework 4, task 2</a></li>
+                <li><a href="./homework/homework4/03-tacotemple/index.html">Homework 4, task 3</a></li>
+                <li><a href="./homework/homework4/04-responsive-layout-grid/index.html">Homework 4, task 4</a></li>
+            </ul>
+        </section>
+
+        <p id="quizzes-label">Quizzes</p>
+        <input type="radio" name="nav" title="Quizzes" aria-labelledby="quizzes-label" />
+        <section id="quizzes">
+            <h2 class="sixtyfour-font">Quizzes</h2>
+            <ul>
+                <li><a href="./quizzes/quiz1/index.html">Quiz 1</a></li>
+            </ul>
+        </section>
+
+        <p id="tutorials-label">Tutorials</p>
+        <input type="radio" name="nav" title="Tutorials" aria-labelledby="tutorials-label" />
+        <section id="tutorials">
+            <h2 class="sixtyfour-font">Tutorials</h2>
+            <ul>
+                <li><a href="./tutorials/tutorial02/index.html">Tutorial 2</a></li>
+                <li><a href="./index.html">Tutorial 3</a> (this page)</li>
+                <li><a href="./tutorials/tutorial04/index.html">Tutorial 4</a></li>
+                <li><a href="./tutorials/tutorial05/01-flexbox-froggy/Capture.PNG">Tutorial 5, task 1</a></li>
+                <li><a href="./tutorials/tutorial05/02-flex/index.html">Tutorial 5, task 2</a></li>
+                <li><a href="./tutorials/tutorial05/03-navbar/index.html">Tutorial 5, task 3</a></li>
+                <li><a href="./tutorials/tutorial07/01-font-switcher/index.html">Tutorial 7, task 1</a></li>
+                <li><a href="./tutorials/tutorial07/02-theme-switcher/index.html">Tutorial 7, task 2</a></li>
+                <li><a href="./tutorials/tutorial07/03-dyslexia-mode/index.html">Tutorial 7, task 3</a></li>
+                <li><a href="./tutorials/tutorial08/index.html">Tutorial 8</a></li>
+                <li><a href="./tutorials/tutorial09/artwork/index.html">Tutorial 9, task 1</a></li>
+                <li><a href="./tutorials/tutorial09/cars/index.html">Tutorial 9, task 2</a></li>
+            </ul>
+        </section>
+
+        <p id="inspiration-label">Inspiration</p>
+        <input type="radio" name="nav" title="Inspiration" aria-labelledby="inspiration-label" />
+        <section id="inspiration">
+            <h2 class="sixtyfour-font">Design Inspiration</h2>
+            <ul>
+                <li><a href="https://www.youtube.com/">YouTube</a> Clean design; well-arranged sections and a
+                    sidebar that's only present when you need it to be.</li>
+                <li><a href="https://csci-185.github.io/spring2024/design-reference/">This class's webpage</a> Very
+                    pretty header bar.</li>
+            </ul>
+        </section>
+
+        <p id="exercises-label">Exercises</p>
+        <input type="radio" name="nav" title="Exercises" aria-labelledby="exercises-label" />
+        <section id="class-exercises">
+            <h2 class="sixtyfour-font">Class Exercises</h2>
+            <!-- 
                     Links to your in-class activities
                 -->
-            </section>
-            <section id="quizzes">
-                <h2>Quizzes</h2>
-                <ul>
-                    <li><a href="./quizzes/quiz1/index.html">Quiz 1</a></li>
-                </ul>
-            </section>
-        </main>
-   </body>
+        </section>
+    </main>
+</body>
+
 </html>
