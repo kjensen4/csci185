@@ -9,3 +9,8 @@ const restaurants = [
     "Red Ginger Dimsum And Tapas", 
     "Murasaki Asheville"
 ];
+
+const output = document.getElementById('output')
+for (r of restaurants) {
+    output.innerText += r + '\n'
+}
