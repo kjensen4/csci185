@@ -1,58 +1,43 @@
 const baseURL = 'https://www.apitutor.org/spotify/simple/v1/search';
 
+const trackslimit = 5
 const getTypes = {
     'tracks': {
+        'url': (term)=>{return `${baseURL}?q=${term}&type=track&limit=${trackslimit}`},
         'type': 'track',
-        'limit': '5',
         'sectionID': 'tracks',
-        'template': (track) => {
-            return `<section class="track-item preview">
-                <img src="${track.album.image_url}">
-                <i class="fas play-track fa-play" aria-hidden="true"></i>
-                <div class="label">
-                    <h2>${track.name}</h2>
-                    <p>
-                        ${track.artist.name}
-                    </p>
-                </div>
-            </section>`
-        },
+        'template': trackTemplate,
+        'ifEmpty': "No tracks found that match your search."
     },
     'albums': {
+        'url': (term)=>{return `${baseURL}?q=${term}&type=album&limit=10`},
         'type': 'album',
-        'limit': '10',
         'sectionID': 'albums',
-        'template': (album) => {
-            return `<section class="album-card" id="${album.id}">
-                <div>
-                    <img src="${album.image_url}">
-                    <h2>${album.name}</h2>
-                    <div class="footer">
-                        <a href="${album.spotify_url}" target="_blank">
-                            view on spotify
-                        </a>
-                    </div>
-                </div>
-            </section>`
-        },
+        'template': albumTemplate,
+        'ifEmpty': "No albums found that match your search."
     },
     'artist': {
+        'url': (term)=>{return `${baseURL}?q=${term}&type=artist&limit=1`},
         'type': 'artist',
-        'limit': '1',
         'sectionID': 'artist',
-        'template': (artist) => {
-            return `<section class="artist-card" id="${artist.id}">
-                <div>
-                    <img src="${artist.image_url}">
-                    <h2>${artist.name}</h2>
-                    <div class="footer">
-                        <a href="${artist.spotify_url}" target="_blank">
-                            view on spotify
-                        </a>
-                    </div>
-                </div>
-            </section>`
-        },
+        'template': artistTemplate,
+        'ifEmpty': "No artists found that match your search."
+    },
+    'albumtracks': {
+        'url': (album)=>{return `https://www.apitutor.org/spotify/v1/albums/${album.id}/tracks?limit=${trackslimit}`},
+        'type': 'specialtrack',
+        'limit': 5,
+        'sectionID': 'tracks',
+        'template': trackTemplate,
+        'ifEmpty': "No tracks found in that album."
+    },
+    'artisttracks': {
+        'url': (artist)=>{return `https://www.apitutor.org/spotify/v1/artists/${artist.id}/top-tracks?country=us&limit=${trackslimit}`},
+        'type': 'specialtrack',
+        'limit': 5,
+        'sectionID': 'tracks',
+        'template': trackTemplate,
+        'ifEmpty': "No tracks found by that artist."
     }
 }
 
@@ -60,7 +45,7 @@ function search(ev) {
     const term = document.querySelector('#search').value;
     console.log('search for:', term);
     // issue three Spotify queries at once...
-    get(getTypes.tracks, term,);
+    get(getTypes.tracks, term);
     get(getTypes.albums, term);
     get(getTypes.artist, term);
     if (ev) {
@@ -68,29 +53,35 @@ function search(ev) {
     }
 }
 
-async function get(getType, term) {
-    const url = `${baseURL}?q=${term}&type=${getType.type}&limit=${getType.limit}`
+async function get(getType, input) {
+    const url = getType.url(input)
     const data = await fetch(url)
     const section = document.getElementById(getType.sectionID)
 
     data.json().then(
         function (values) {
-            console.log(values)
+            console.log(values) // remove this later
             section.innerHTML = ""
 
             if (values.length == 0) {
-                section.innerHTML = `No ${getType.type}s found that match your search.`
+                section.innerHTML = getType.ifEmpty
                 return
             }
           
             if (getType.type == 'artist' && !('image_url' in values[0])) {
                 values[0].image_url = ""
             }
+            if (getType.type == 'track') {
+                document.querySelector('#artist-section>h1').innerText = "Top Result"
+            }
+            if (getType.type == 'specialtrack') {
+                values = values.items
+            }
         
             for (v of values) {
                 const template = getType.template(v)
 
-                section.innerHTML += template
+                section.insertAdjacentElement("beforeend", template)
             }
         },
         function (error) { section.innerHTML = `Error: ${error}` }
@@ -105,3 +96,8 @@ document.querySelector('#search').onkeyup = (ev) => {
         search();
     }
 };
+
+// Load default
+get(getTypes.tracks, "");
+get(getTypes.albums, "");
+get(getTypes.artist, "");
