@@ -1,7 +1,7 @@
 function trackTemplate(track) {
     let element = document.createElement('section')
     element.className = "track-item preview"
-    element.innerHTML = `<img src="${track.album.image_url}">
+    element.innerHTML = `<img src="${track.album.image_url}" alt="Album art for ${track.name}">
         <i class="fas play-track fa-play" aria-hidden="true"></i>
         <div class="label">
             <h2>${track.name}</h2>
@@ -35,7 +35,7 @@ function albumTemplate(album) {
     element.id = album.id
 
     element.innerHTML = `<div>
-        <img src="${album.image_url}">
+        <img src="${album.image_url}" alt="Album art for ${album.name}">
         <h2>${album.name}</h2>
         <div class="footer">
             <a href="${album.spotify_url}" target="_blank">
@@ -55,7 +55,7 @@ function artistTemplate(artist) {
     element.id = artist.id
     
     element.innerHTML = `<div>
-        <img src="${artist.image_url}">
+        <img src="${artist.image_url}" alt="Image for ${artist.name}">
         <h2>${artist.name}</h2>
         <div class="footer">
             <a href="${artist.spotify_url}" target="_blank">
@@ -79,7 +79,7 @@ function albumTrackTemplate(track, album) {
     }
     artistnames = artistnames.substring(0, artistnames.length-2)
 
-    element.innerHTML = `<img src="${album.image_url}">
+    element.innerHTML = `<img src="${album.image_url}" alt="Album art for ${track.name}">
         <i class="fas play-track fa-play" aria-hidden="true"></i>
         <div class="label">
             <h2>${track.name}</h2>
@@ -105,7 +105,7 @@ function artistTrackTemplate(track) {
     }
     artistnames = artistnames.substring(0, artistnames.length-2)
 
-    element.innerHTML = `<img src="${track.album.images[2].url}">
+    element.innerHTML = `<img src="${track.album.images[2].url}" alt="Album art for ${track.name}">
         <i class="fas play-track fa-play" aria-hidden="true"></i>
         <div class="label">
             <h2>${track.name}</h2>
