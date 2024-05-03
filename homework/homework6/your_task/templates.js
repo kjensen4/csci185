@@ -68,3 +68,53 @@ function artistTemplate(artist) {
 
     return element
 }
+
+function albumTrackTemplate(track, album) {
+    let element = document.createElement('section')
+    element.className = "track-item preview"
+
+    let artistnames = ""
+    for (const a of track.artists){
+        artistnames += a.name + ", "
+    }
+    artistnames = artistnames.substring(0, artistnames.length-2)
+
+    element.innerHTML = `<img src="${album.image_url}">
+        <i class="fas play-track fa-play" aria-hidden="true"></i>
+        <div class="label">
+            <h2>${track.name}</h2>
+            <p>
+                ${artistnames}
+            </p>
+        </div>`
+
+    element.querySelector('img').addEventListener('click', () => {updateEmbeddable(track)})
+
+    console.log(element)
+
+    return element
+}
+
+function artistTrackTemplate(track) {
+    let element = document.createElement('section')
+    element.className = "track-item preview"
+
+    let artistnames = ""
+    for (const a of track.artists){
+        artistnames += a.name + ", "
+    }
+    artistnames = artistnames.substring(0, artistnames.length-2)
+
+    element.innerHTML = `<img src="${track.album.images[2].url}">
+        <i class="fas play-track fa-play" aria-hidden="true"></i>
+        <div class="label">
+            <h2>${track.name}</h2>
+            <p>
+                ${artistnames}
+            </p>
+        </div>`
+
+    element.querySelector('img').addEventListener('click', () => {updateEmbeddable(track)})
+
+    return element
+}

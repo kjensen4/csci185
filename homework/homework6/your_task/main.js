@@ -25,18 +25,16 @@ const getTypes = {
     },
     'albumtracks': {
         'url': (album)=>{return `https://www.apitutor.org/spotify/v1/albums/${album.id}/tracks?limit=${trackslimit}`},
-        'type': 'specialtrack',
-        'limit': 5,
+        'type': 'albumtrack',
         'sectionID': 'tracks',
-        'template': trackTemplate,
+        'template': albumTrackTemplate,
         'ifEmpty': "No tracks found in that album."
     },
     'artisttracks': {
-        'url': (artist)=>{return `https://www.apitutor.org/spotify/v1/artists/${artist.id}/top-tracks?country=us&limit=${trackslimit}`},
-        'type': 'specialtrack',
-        'limit': 5,
+        'url': (artist)=>{return `https://www.apitutor.org/spotify/v1/artists/${artist.id}/top-tracks?country=us`},
+        'type': 'artisttrack',
         'sectionID': 'tracks',
-        'template': trackTemplate,
+        'template': artistTrackTemplate,
         'ifEmpty': "No tracks found by that artist."
     }
 }
@@ -44,6 +42,8 @@ const getTypes = {
 function search(ev) {
     const term = document.querySelector('#search').value;
     console.log('search for:', term);
+    if (term == "") {return}
+
     // issue three Spotify queries at once...
     get(getTypes.tracks, term);
     get(getTypes.albums, term);
@@ -68,14 +68,30 @@ async function get(getType, input) {
                 return
             }
           
-            if (getType.type == 'artist' && !('image_url' in values[0])) {
-                values[0].image_url = ""
-            }
-            if (getType.type == 'track') {
-                document.querySelector('#artist-section>h1').innerText = "Top Result"
-            }
-            if (getType.type == 'specialtrack') {
-                values = values.items
+            switch (getType.type) {
+                case 'artist':
+                    if (!('image_url' in values[0])) {
+                        values[0].image_url = ""
+                    }
+                    break
+                case 'track':
+                    document.querySelector('#artist-section>h1').innerText = "Top Result"
+                    break
+                case 'albumtrack':
+                    values = values.items
+                    getType.template = (value) => {
+                        return albumTrackTemplate(value, input)
+                    }
+                    break
+                case 'artisttrack':
+                    temp = []
+                    for (var i = 0; i < trackslimit; i++){
+                        temp[i] = values.tracks[i]
+                    }
+                    values = temp
+                    break
+                default:
+                    break
             }
         
             for (v of values) {
@@ -97,7 +113,4 @@ document.querySelector('#search').onkeyup = (ev) => {
     }
 };
 
-// Load default
-get(getTypes.tracks, "");
-get(getTypes.albums, "");
-get(getTypes.artist, "");
+search()
