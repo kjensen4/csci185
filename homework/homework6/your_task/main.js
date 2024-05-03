@@ -113,4 +113,7 @@ document.querySelector('#search').onkeyup = (ev) => {
     }
 };
 
-search()
+// populate with default
+get(getTypes.tracks, 'depeche mode');
+get(getTypes.albums, 'depeche mode');
+get(getTypes.artist, 'depeche mode');
