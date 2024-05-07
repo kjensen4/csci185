@@ -1,0 +1,55 @@
+body {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #1c131c;
+    color: #ffffff;
+    margin: 30px;
+}
+
+header {
+    font-size: 150%;
+    text-decoration: underline;
+}
+
+main {
+    display: flex;
+    margin:20px;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    margin: 0
+}
+
+section {
+    padding: 10px;
+    border: 2px solid white;
+    background-color: #2c182c;
+    max-width: fit-content;
+}
+
+section>input {
+    margin: 0px 10px 0px 20px;
+}
+
+section>select {
+    margin: 0px 20px 0px 20px;
+}
+
+canvas {
+    margin: 20px 0 0 0;
+    border-radius: 100px;
+}
+
+.sixtyfour-font {
+    font-family: "Sixtyfour", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "BLED" 0,
+      "SCAN" 0;
+  }

@@ -1,9 +1,31 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js" defer></script>
-        <script src="./main.js"></script>
-    </head>
-    <body>
 
-    </body>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js" defer></script>
+    <script src="./main.js"></script>
+    <script src="./utils.js"></script>
+    <script src="./geometry.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="sixtyfour-font">CSCI 185 Final Project: 4D Demonstration</header>
+    
+    <main>
+        <p>Left click and drag to yaw and pitch; right click and drag to twirl and tumble; ctrl+click and drag to roll and
+            reel.</p>
+        <p>Reset orientation with 'r', slow down rotation with spacebar.</p>
+    </main>
+    <section>
+        <input id="ghosting" type="checkbox" checked>ghosting</input>
+        <input id="slice" type="checkbox" checked>slice</input>
+        <select id="shape" type="dropdown" label="shape">
+            <option id="option1" value="tesseract">Tesseract</option>
+            <option id="option2" value="orthoplex">Orthoplex</option>
+        </select>
+    </section>
+</body>
+
 </html>
